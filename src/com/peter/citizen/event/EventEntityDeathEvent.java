@@ -1,4 +1,4 @@
-package com.peter.citizen;
+package com.peter.citizen.event;
 
 import java.util.List;
 
@@ -7,6 +7,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
+
+import com.peter.citizen.Citizen;
 
 
 

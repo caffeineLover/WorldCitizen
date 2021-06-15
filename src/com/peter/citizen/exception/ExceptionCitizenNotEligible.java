@@ -1,4 +1,4 @@
-package com.peter.citizen;
+package com.peter.citizen.exception;
 
 
 

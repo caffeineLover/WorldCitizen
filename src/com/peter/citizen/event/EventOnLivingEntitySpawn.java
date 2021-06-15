@@ -1,10 +1,12 @@
-package com.peter.citizen;
+package com.peter.citizen.event;
 
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+
+import com.peter.citizen.Citizen;
 
 
 
