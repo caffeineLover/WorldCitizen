@@ -1,4 +1,4 @@
-package com.peter.citizen.event;
+package com.peter.citizen.listeners;
 
 import java.util.List;
 
@@ -14,11 +14,11 @@ import com.peter.citizen.Citizen;
 
 // When an entity dies, check to see if it's a citizen.  If so, log the event and remove from the census.
 //
-public class EventEntityDeathEvent implements Listener
+public class ListenerEntityDeathEvent implements Listener
 {
 	
 	@EventHandler(priority = EventPriority.HIGH)
-	public void EntityDeathEvent(LivingEntity lentity, List<ItemStack> drops)
+	public void onEntityDeathEvent(LivingEntity lentity, List<ItemStack> drops)
 	{
 		Citizen.remove( lentity );
 	}
