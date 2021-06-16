@@ -5,6 +5,11 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.peter.citizen.listeners.ListenerEntityDeathEvent;
+import com.peter.citizen.listeners.ListenerOnChunkLoad;
+import com.peter.citizen.listeners.ListenerOnLivingEntitySpawn;
+import com.peter.citizen.listeners.ListenerOnPlayerInteract;
+
 
 
 public class Main extends JavaPlugin implements Listener
@@ -20,10 +25,10 @@ public class Main extends JavaPlugin implements Listener
 	@Override public void onEnable()
 	{
 		System.out.println("Plugin enabled.");
-		getServer().getPluginManager().registerEvents(new EventEntityDeathEvent(), this);
-		getServer().getPluginManager().registerEvents(new EventOnChunkLoad(), this);
-		getServer().getPluginManager().registerEvents(new EventOnLivingEntitySpawn(), this);
-		getServer().getPluginManager().registerEvents(new EventOnPlayerInteract(), this);
+		getServer().getPluginManager().registerEvents(new ListenerEntityDeathEvent(), this);
+		getServer().getPluginManager().registerEvents(new ListenerOnChunkLoad(), this);
+		getServer().getPluginManager().registerEvents(new ListenerOnLivingEntitySpawn(), this);
+		getServer().getPluginManager().registerEvents(new ListenerOnPlayerInteract(), this);
 		 
 	}
 	
