@@ -11,7 +11,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Villager;
 
 
 
@@ -48,24 +47,22 @@ public class Citizen
 		config = new File( pluginFolder, "config.yml");
 		census = new File( pluginFolder, "census.yml");
 
-		System.out.println("Check 1");
 		configFile = YamlConfiguration.loadConfiguration(config);	
 		censusFile = YamlConfiguration.loadConfiguration(census);	
 
-		System.out.println("Check 2");
 		this.uuid   = lentity.getUniqueId();
 
 		// The gender determines the name type, so we need to set gender first.
 		this.gender = (Math.random() <= 0.5) ? EnumGender.male : EnumGender.female;
 		this.name   = getName( this.gender );
 
-		// A witch is not a Villager.
+		//// Profession
+		
 		if( lentity.getType() == EntityType.WITCH )
-			this.profession = "Witch";
+			// A witch is not a Villager.
+			this.profession = "witch";
 		else
-			this.profession = ((Villager) lentity).getProfession().toString();
-
-		System.out.println("Check 3");
+			this.profession = this.profession.toLowerCase();
 	}
 	
 	
@@ -104,9 +101,10 @@ public class Citizen
 	// Write the citizen to the census file.
 	public void write()
 	{
-		censusFile.set("citizens." + uuid + ".name", name);
-		censusFile.set("citizens." + uuid + ".name", gender);
-		censusFile.set("citizens." + uuid + ".title", "the " + profession);
+		System.out.println("about to write: name is " + this.name);
+		censusFile.set("citizens." + uuid + ".name", this.name);
+		censusFile.set("citizens." + uuid + ".gender", this.gender.toString());
+		censusFile.set("citizens." + uuid + ".title", "the " + this.profession);
 		try {
 			censusFile.save(census);
 		} catch ( IOException e ) {
@@ -129,6 +127,7 @@ public class Citizen
 	{
 	    List<String> nList = configFile.getStringList("names." + this.gender.toString());
 	    int index = (new Random()).nextInt(nList.size());
+	    System.out.println("getName(): name:       " + nList.get(index));
 	    return nList.get(index);
 	}
 	
