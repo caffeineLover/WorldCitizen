@@ -1,4 +1,4 @@
-package com.peter.citizen.event;
+package com.peter.citizen.listeners;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -14,25 +14,32 @@ import com.peter.citizen.Citizen;
 // Upon loading a new chunk, scan all LivingEntities, looking for Citizen candidates which are not already Citizens.
 // If we find candidates who are not already Citizens, make them into a Citizen.
 //
-public class EventOnChunkLoad implements Listener
+public class ListenerOnChunkLoad implements Listener
 {
 
 	@EventHandler(priority = EventPriority.HIGH)
 	public void onChunkLoad(ChunkLoadEvent e)
 	{
+
 		for( Entity entity : e.getChunk().getEntities() )
 		{
 			if( ! (entity instanceof LivingEntity) )
 				return;
 
-			if( ! Citizen.isEligible( (LivingEntity) entity ) )
-				return;
 
-			if( Citizen.isCitizen( (LivingEntity) entity) )
+			if( ! Citizen.isEligible( (LivingEntity) entity ) ) {
 				return;
+			}
 
+			if( Citizen.isCitizen( (LivingEntity) entity) ) {
+				System.out.println("onChunkLoad: LivingEntity already citizen");
+				return;
+			}
+
+			System.out.println("   Creating new Citizen.");
 			Citizen c = new Citizen( (LivingEntity) entity );
 			c.write();
+			System.out.println("   Done.");
 		}
 	}
 

@@ -1,12 +1,9 @@
 package com.peter.citizen.listeners;
 
-import java.util.List;
-
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.event.entity.EntityDeathEvent;
 
 import com.peter.citizen.Citizen;
 
@@ -18,9 +15,11 @@ public class ListenerEntityDeathEvent implements Listener
 {
 	
 	@EventHandler(priority = EventPriority.HIGH)
-	public void onEntityDeathEvent(LivingEntity lentity, List<ItemStack> drops)
+	public void onEntityDeathEvent(EntityDeathEvent e)
 	{
-		Citizen.remove( lentity );
+		System.out.println("onEntityDeathEvent event");
+
+		Citizen.remove( e.getEntity() );
 	}
 		
 }

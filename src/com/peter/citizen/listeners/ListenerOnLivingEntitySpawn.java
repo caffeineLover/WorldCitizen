@@ -1,4 +1,4 @@
-package com.peter.citizen.event;
+package com.peter.citizen.listeners;
 
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
@@ -13,7 +13,7 @@ import com.peter.citizen.Citizen;
 // When a creature is spawned, check to see if it's a Citizen candidate.  If so, make it a Citizen.
 // No need to check if it's already a Citizen since it's newly spawned... we know it's not.
 //
-public class EventOnLivingEntitySpawn implements Listener
+public class ListenerOnLivingEntitySpawn implements Listener
 {
 	
 	@EventHandler(priority = EventPriority.HIGH)
@@ -23,8 +23,11 @@ public class EventOnLivingEntitySpawn implements Listener
 
 		if( Citizen.isEligible(entity) )
 		{
+			System.out.println("onLivingEntitySpawn Eligible: " + entity.getType() + " Creating...");
+
 			Citizen c = new Citizen( entity );
 			c.write();
+			System.out.println("Wrote citizen.");
 		}
 	}
 
