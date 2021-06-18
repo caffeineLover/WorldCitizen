@@ -1,0 +1,13 @@
+CitizenTypes:
+- VILLAGER
+- VINDICATOR
+- EVOKER
+- WITCH
+
+names:
+  male:
+    - 'NameOne'
+    - 'NameTwo'
+  female:
+    - 'NameThree'
+    - 'NameFour'

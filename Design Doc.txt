@@ -36,3 +36,4 @@ Events
 
 			When an entity dies, check to see if it's a Citizen.  If so, log the event along with the killer
 			and remove the Citizen from the census.
+>>>>>>> origin/main
