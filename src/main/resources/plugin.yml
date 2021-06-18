@@ -1,0 +1,7 @@
+name: WorldCitizen
+version: 1
+author: Peter
+api-version: 1.16
+description: Collection of my plugin tests.
+main: com.peter.citizen.CitizenPlugin
+load: POSTWORLD

@@ -1,0 +1,38 @@
+Citizen Candidate
+
+	A citizen candidate is any LivingEntity of type specified in config.yml, which is one of:
+	
+		Villager
+		Vindicator
+		Evoker
+		Witch
+
+Citizen
+
+	A Citizen is any Citizen Candidate whose UUID and traits are written in the file census.yml.  The plugin will
+	periodically search for candidates who are not currently Citizens and make them citizens.  See Events.
+
+
+
+Events
+
+	The plugin will use the following events to look for Citizen candidates:
+
+		onLivingEntitySpawn
+		
+			When an entity spawns, check to see if it's a Citizen Candidate.  If so, make it a villager.
+
+		onChunkLoad
+		
+			Iterate through all the entities of the chunk.  If there are any Citizen Candidates which are
+			not already Citizens, make them into a Citizen.
+
+		onPlayerInteract
+		
+			Check to see if player is interacting with a Citizen Candidate.  If so, and it's not already a
+			citizen, make it into a Citizen.
+
+		EntityDeathEvent
+
+			When an entity dies, check to see if it's a Citizen.  If so, log the event along with the killer
+			and remove the Citizen from the census.
