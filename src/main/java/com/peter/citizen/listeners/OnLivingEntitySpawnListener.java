@@ -1,5 +1,6 @@
 package com.peter.citizen.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -7,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
 import com.peter.citizen.Citizen;
+import com.peter.citizen.CitizenPlugin;
 
 
 
@@ -15,7 +17,18 @@ import com.peter.citizen.Citizen;
 //
 public class OnLivingEntitySpawnListener implements Listener
 {
+	private CitizenPlugin plugin;
+	
+	
 
+	public OnLivingEntitySpawnListener(CitizenPlugin plugin)
+	{
+		this.plugin = plugin;
+		Bukkit.getPluginManager().registerEvents(this, plugin);
+	}
+
+	
+	
 	@EventHandler(priority = EventPriority.HIGH)
 	public void onLivingEntitySpawn(CreatureSpawnEvent spawnEvent)
 	{

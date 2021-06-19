@@ -1,13 +1,14 @@
 package com.peter.citizen.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.world.ChunkLoadEvent;
-
 import com.peter.citizen.Citizen;
+import com.peter.citizen.CitizenPlugin;
 
 
 
@@ -16,7 +17,18 @@ import com.peter.citizen.Citizen;
 //
 public class OnChunkLoadListener implements Listener
 {
+	private CitizenPlugin plugin;
+	
+	
 
+	public OnChunkLoadListener(CitizenPlugin plugin)
+	{
+		this.plugin = plugin;
+		Bukkit.getPluginManager().registerEvents(this, plugin);
+	}	
+
+	
+	
 	@EventHandler(priority = EventPriority.HIGH)
 	public void onChunkLoad(ChunkLoadEvent e)
 	{
@@ -43,4 +55,6 @@ public class OnChunkLoadListener implements Listener
 		}
 	}
 
+	
+	
 }

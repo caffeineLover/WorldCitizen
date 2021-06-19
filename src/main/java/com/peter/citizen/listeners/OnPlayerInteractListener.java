@@ -1,5 +1,6 @@
 package com.peter.citizen.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -7,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
 import com.peter.citizen.Citizen;
+import com.peter.citizen.CitizenPlugin;
 
 
 
@@ -15,7 +17,18 @@ import com.peter.citizen.Citizen;
 //
 public class OnPlayerInteractListener implements Listener
 {
+	private CitizenPlugin plugin;
+	
+	
 
+	public OnPlayerInteractListener(CitizenPlugin plugin)
+	{
+		this.plugin = plugin;
+		Bukkit.getPluginManager().registerEvents(this, plugin);
+	}
+
+	
+	
 	@EventHandler(priority = EventPriority.HIGH)
 	public void onPlayerInteract(PlayerInteractEntityEvent e)
 	{
@@ -33,4 +46,6 @@ public class OnPlayerInteractListener implements Listener
 		c.write();
 	}
 
+	
+	
 }
