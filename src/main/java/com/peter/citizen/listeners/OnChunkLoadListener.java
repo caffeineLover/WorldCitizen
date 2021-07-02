@@ -8,6 +8,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.world.ChunkLoadEvent;
 import com.peter.citizen.Citizen;
+import com.peter.citizen.CitizenHandler;
 import com.peter.citizen.CitizenPlugin;
 
 
@@ -17,6 +18,7 @@ import com.peter.citizen.CitizenPlugin;
 //
 public class OnChunkLoadListener implements Listener
 {
+	@SuppressWarnings("unused")
 	private CitizenPlugin plugin;
 	
 	
@@ -39,19 +41,18 @@ public class OnChunkLoadListener implements Listener
 				return;
 
 
-			if( ! Citizen.isEligible( (LivingEntity) entity ) ) {
+			if( ! CitizenHandler.isEligible( (LivingEntity) entity ) ) {
 				return;
 			}
 
-			if( Citizen.isCitizen( (LivingEntity) entity) ) {
+			if( CitizenHandler.isCitizen( (LivingEntity) entity) ) {
 				System.out.println("onChunkLoad: LivingEntity already citizen");
 				return;
 			}
 
 			System.out.println("   Creating new Citizen.");
 			Citizen c = new Citizen( (LivingEntity) entity );
-			c.write();
-			System.out.println("   Done.");
+			CitizenHandler.write( c );
 		}
 	}
 

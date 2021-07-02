@@ -7,7 +7,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 
-import com.peter.citizen.Citizen;
+import com.peter.citizen.CitizenHandler;
 
 
 
@@ -15,6 +15,7 @@ import com.peter.citizen.Citizen;
 //
 public class EntityDeathListener implements Listener
 {
+	@SuppressWarnings("unused")
 	private CitizenPlugin plugin;
 
 	
@@ -32,7 +33,7 @@ public class EntityDeathListener implements Listener
 	{
         System.out.println("onEntityDeathEvent event");
 
-        Citizen.remove(e.getEntity());
+        CitizenHandler.remove(e.getEntity());
     }
 
 	

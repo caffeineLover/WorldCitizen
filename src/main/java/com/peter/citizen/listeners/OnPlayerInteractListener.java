@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
 import com.peter.citizen.Citizen;
+import com.peter.citizen.CitizenHandler;
 import com.peter.citizen.CitizenPlugin;
 
 
@@ -17,6 +18,7 @@ import com.peter.citizen.CitizenPlugin;
 //
 public class OnPlayerInteractListener implements Listener
 {
+	@SuppressWarnings("unused")
 	private CitizenPlugin plugin;
 	
 	
@@ -36,14 +38,14 @@ public class OnPlayerInteractListener implements Listener
 
 		LivingEntity entity = (LivingEntity) e.getRightClicked();
 
-		if( ! Citizen.isEligible(entity) )
+		if( ! CitizenHandler.isEligible(entity) )
 			return;
 
-		if( Citizen.isCitizen(entity) )
+		if( CitizenHandler.isCitizen(entity) )
 			return;
 
 		Citizen c = new Citizen( entity );
-		c.write();
+		CitizenHandler.write( c );
 	}
 
 	

@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
 import com.peter.citizen.Citizen;
+import com.peter.citizen.CitizenHandler;
 import com.peter.citizen.CitizenPlugin;
 
 
@@ -17,6 +18,7 @@ import com.peter.citizen.CitizenPlugin;
 //
 public class OnLivingEntitySpawnListener implements Listener
 {
+	@SuppressWarnings("unused")
 	private CitizenPlugin plugin;
 	
 	
@@ -34,12 +36,12 @@ public class OnLivingEntitySpawnListener implements Listener
 	{
 		LivingEntity entity = (LivingEntity) spawnEvent.getEntity();
 
-		if( Citizen.isEligible(entity) )
+		if( CitizenHandler.isEligible(entity) )
 		{
 			System.out.println("onLivingEntitySpawn Eligible: " + entity.getType() + " Creating...");
 
 			Citizen c = new Citizen( entity );
-			c.write();
+			CitizenHandler.write( c );
 			System.out.println("Wrote citizen.");
 		}
 	}
